@@ -8,11 +8,11 @@ const generateToken = require("../config/generateToken");
 const allUsers = asyncHandler(async (req, res) => {
   const keyword = req.query.search
     ? {
-        $or: [
-          { name: { $regex: req.query.search, $options: "i" } },
-          { email: { $regex: req.query.search, $options: "i" } },
-        ],
-      }
+      $or: [
+        { name: { $regex: req.query.search, $options: "i" } },
+        { email: { $regex: req.query.search, $options: "i" } },
+      ],
+    }
     : {};
 
   const users = await User.find(keyword).find({ _id: { $ne: req.user._id } });
@@ -23,14 +23,14 @@ const allUsers = asyncHandler(async (req, res) => {
 //@route           POST /api/user/
 //@access          Public
 const registerUser = asyncHandler(async (req, res) => {
-  const { name, email, password, pic } = req.body;
+  const { name, email, password, mobileNumber, pic } = req.body;
 
-  if (!name || !email || !password) {
+  if (!name || !email || !password || !mobileNumber) {
     res.status(400);
-    throw new Error("Please Enter all the Feilds");
+    throw new Error("Please Enter all the Fields");
   }
 
-  const userExists = await User.findOne({ email });
+  const userExists = await User.findOne({ mobileNumber }, { email });
 
   if (userExists) {
     res.status(400);
@@ -39,7 +39,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
   const user = await User.create({
     name,
-    email,
+    email, mobileNumber,
     password,
     pic,
   });
@@ -49,13 +49,14 @@ const registerUser = asyncHandler(async (req, res) => {
       _id: user._id,
       name: user.name,
       email: user.email,
+      mobileNumber: user.mobileNumber,
       isAdmin: user.isAdmin,
       pic: user.pic,
       token: generateToken(user._id),
     });
   } else {
     res.status(400);
-    throw new Error("User not found");
+    throw new Error("User not found, Try Again");
   }
 });
 

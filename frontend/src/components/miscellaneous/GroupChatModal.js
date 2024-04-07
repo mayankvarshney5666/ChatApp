@@ -144,14 +144,14 @@ const GroupChatModal = ({ children }) => {
           <ModalBody d="flex" flexDir="column" alignItems="center">
             <FormControl>
               <Input
-                placeholder="Chat Name"
+                placeholder="Enter Group Name"
                 mb={3}
                 onChange={(e) => setGroupChatName(e.target.value)}
               />
             </FormControl>
             <FormControl>
               <Input
-                placeholder="Add Users eg: John, Piyush, Jane"
+                placeholder="Add Users e.g.- Mayank, Devanshu, Sagar, etc"
                 mb={1}
                 onChange={(e) => handleSearch(e.target.value)}
               />
@@ -182,7 +182,7 @@ const GroupChatModal = ({ children }) => {
           </ModalBody>
           <ModalFooter>
             <Button onClick={handleSubmit} colorScheme="blue">
-              Create Chat
+              Create Group
             </Button>
           </ModalFooter>
         </ModalContent>

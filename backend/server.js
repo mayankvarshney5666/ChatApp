@@ -6,9 +6,12 @@ const chatRoutes = require("./routes/chatRoutes");
 const messageRoutes = require("./routes/messageRoutes");
 const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 const path = require("path");
+const colors = require('colors');
+
 
 dotenv.config();
 connectDB();
+
 const app = express();
 
 app.use(express.json()); // to accept json data

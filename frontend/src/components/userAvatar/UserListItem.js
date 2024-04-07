@@ -1,9 +1,9 @@
 import { Avatar } from "@chakra-ui/avatar";
 import { Box, Text } from "@chakra-ui/layout";
-import { ChatState } from "../../Context/ChatProvider";
+// import { ChatState } from "../../Context/ChatProvider";
 
-const UserListItem = ({ handleFunction }) => {
-  const { user } = ChatState();
+const UserListItem = ({ user, handleFunction }) => {
+  // const { user } = ChatState();
 
   return (
     <Box
@@ -11,7 +11,7 @@ const UserListItem = ({ handleFunction }) => {
       cursor="pointer"
       bg="#E8E8E8"
       _hover={{
-        background: "#38B2AC",
+        background: "blue",
         color: "white",
       }}
       w="100%"
@@ -32,6 +32,11 @@ const UserListItem = ({ handleFunction }) => {
       />
       <Box>
         <Text>{user.name}</Text>
+
+        <Text fontSize="xs">
+          <b>Mobile No. : </b>
+          {user.mobileNumber}
+        </Text>
         <Text fontSize="xs">
           <b>Email : </b>
           {user.email}

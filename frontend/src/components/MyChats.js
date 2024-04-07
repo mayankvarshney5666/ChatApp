@@ -1,5 +1,7 @@
-import { AddIcon } from "@chakra-ui/icons";
+import { AddIcon, RepeatIcon } from "@chakra-ui/icons";
 import { Box, Stack, Text } from "@chakra-ui/layout";
+import { Icon } from '@chakra-ui/react'
+
 import { useToast } from "@chakra-ui/toast";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -66,15 +68,21 @@ const MyChats = ({ fetchAgain }) => {
         justifyContent="space-between"
         alignItems="center"
       >
-        My Chats
+        Your Chats<a href="./">
+          <Icon
+
+            d="block" m={3.5}
+            w={8} h={8} color='blue.500' boxSize={8} left-padding="10px"
+            // fontSize={{ base: "10px", md: "15px", lg: "40px" }}
+            as={RepeatIcon}
+          ></Icon>   </a>
         <GroupChatModal>
           <Button
             d="flex"
             fontSize={{ base: "17px", md: "10px", lg: "17px" }}
             rightIcon={<AddIcon />}
           >
-            New Group Chat
-          </Button>
+            Create Group          </Button>
         </GroupChatModal>
       </Box>
       <Box

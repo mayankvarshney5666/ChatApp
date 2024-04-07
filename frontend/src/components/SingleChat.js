@@ -2,7 +2,7 @@ import { FormControl } from "@chakra-ui/form-control";
 import { Input } from "@chakra-ui/input";
 import { Box, Text } from "@chakra-ui/layout";
 import "./styles.css";
-import { IconButton, Spinner, useToast } from "@chakra-ui/react";
+import { IconButton, Image, Spinner, useToast } from "@chakra-ui/react";
 import { getSender, getSenderFull } from "../config/ChatLogics";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -242,7 +242,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
               <Input
                 variant="filled"
                 bg="#E0E0E0"
-                placeholder="Enter a message.."
+                placeholder="Type to Send Messages..."
                 value={newMessage}
                 onChange={typingHandler}
               />
@@ -251,10 +251,29 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
         </>
       ) : (
         // to get socket.io on same page
-        <Box d="flex" alignItems="center" justifyContent="center" h="100%">
-          <Text fontSize="3xl" pb={3} fontFamily="Work sans">
-            Click on a user to start chatting
-          </Text>
+        <Box d="block"
+          marginTop="100px"
+          // alignItems="center" justifyContent="space-between"
+          h="20%">
+          <Image
+            borderRadius="full"
+            boxSize="150px"
+            width={"60%"}
+            height={"150%"}
+            marginLeft={"100px"}
+            marginBottom={"-20px"}
+            src={"https://i.giphy.com/5k5vZwRFZR5aZeniqb.webp"}
+            // src="./welcome-robot.webp"
+
+            // src={"https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExdnRibmxnamZuZ21hdTVhMjloM3BwczVwZGVuZjZndzV1YTFjaGtveiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/mWGJWYR4aPUvifbPJR/giphy.gif"}
+
+            alt={"Image Not Found"} />
+          <br />
+          <Box d="flex" alignItems="center" justifyContent="center" h="100%">
+            <Text fontSize="3xl" pb={3} fontFamily="Work sans">
+              Select or Search a User to start chatting 😀.
+            </Text>
+          </Box>
         </Box>
       )}
     </>

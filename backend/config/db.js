@@ -1,5 +1,4 @@
-const mongoose = require("mongoose");
-const colors = require("colors");
+const mongoose = require('mongoose');
 
 const connectDB = async () => {
   try {
@@ -7,13 +6,11 @@ const connectDB = async () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-
-    console.log(`MongoDB Connected: ${conn.connection.host}`.cyan.underline);
+    console.log(`MongoDB Successfully Connected :${conn.connection.host}`);
   } catch (error) {
-    console.error(`Error: ${error.message}`.red.bold);
-    process.exit(1); // Exit with a non-zero status code to indicate an error
+    console.log(`Error occured : ${error.message}`);
+    process.exit();
+
   }
 };
-
 module.exports = connectDB;
-
